@@ -1,0 +1,35 @@
+.admin__menu{
+background: transparent;
+
+}
+
+.admin__menu a{
+    color:black;
+}
+
+.admin__menu img{
+    width:50px;
+    height: 50px;
+}
+
+.admin__nav{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.admin__secondarynav .navbar{
+    background:rgb(82, 141, 82);
+}
+
+.admin__secondarynav .navbar a{
+    color:white;
+}
+
+.dropdown-menu{
+    background:rgb(82, 141, 82);
+}
+
+.dropdown-item:hover{
+    background:rgb(105, 180, 105);
+}
