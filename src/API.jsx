@@ -2,11 +2,11 @@
 
 import React,{createContext, useState} from 'react'
 
-const ProductContext=createContext()
-const ConsignmentContext=createContext()
-const CategoryContext=createContext()
-const EngineContext=createContext()
-const ModelContext=createContext()
+export const ProductContext=createContext()
+export const ConsignmentContext=createContext()
+export const CategoryContext=createContext()
+export const EngineContext=createContext()
+export const ModelContext=createContext()
 
 // Product provider
 

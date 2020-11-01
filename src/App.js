@@ -15,11 +15,13 @@ import ManageCategory from './Components/Category/ManageCategory'
 import NewCategory from './Components/Category/NewCategory'
 import ManageModel from './Components/Model/ManageModel'
 import NewModel from './Components/Model/NewModel'
+import ModelDetail from './Components/Model/ModelDetail';
 // React router import
 import {HashRouter as Router, Switch,Route} from 'react-router-dom'
 
 // API import
 import {ProductProvider,ConsignmentProvider,ModelProvider,EngineProvider,CategoryProvider} from './API'
+
 function App() {
   return (
     <ProductProvider>
@@ -66,6 +68,9 @@ function App() {
 
       <Route path="/new_model">
         <NewModel/>
+      </Route>
+
+      <Route path="/model/:model" component={ModelDetail}>
       </Route>
     </Switch>
     </div>

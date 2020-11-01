@@ -1,3 +1,27 @@
 .middle{
     width:45rem;
 }
+
+.consignment__list a{
+    display: block;
+    color:black;
+    
+}
+
+.consignment__list a:hover{
+    text-decoration: none;
+
+}
+.consignment__list .data:hover{
+    background-color: rgb(221, 219, 219);
+    transition: all linear 0.2s;
+}
+
+.items{
+    text-decoration: underline;
+}
+
+.header{
+    justify-content: center;
+    align-items: center;
+}
