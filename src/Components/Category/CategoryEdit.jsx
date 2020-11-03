@@ -1,15 +1,16 @@
 import React, { useContext, useState } from "react";
-import {Link} from 'react-router-dom'
+import {Link,useHistory} from 'react-router-dom'
 // Api import
 import {CategoryContext} from '../../API'
-const NewCategory = () => {
-
+const CategoryEdit = (props) => {
+let history=useHistory()
   const[category,setCategory]=useContext(CategoryContext)
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+ 
   // This state handles the inputs of user
   const [input, setInput] = useState({
-    name: "",
+    name:props.match.params.category,
   });
 
   // Function to handle input
@@ -21,7 +22,7 @@ const NewCategory = () => {
     e.preventDefault();
 
     for(let i=0;i<category.length;i++){
-      if(category[i].name.toLowerCase()===input.name.toLowerCase()){
+      if(category[i].name===input.name){
         setSuccess("")
         setError("Duplicate Entry")
         return
@@ -30,22 +31,22 @@ const NewCategory = () => {
     if (input.name === "") {
       return;
     } else {
-      setCategory([
-        ...category,
-        {
-          name: input.name,
-        },
-      ]);
-      setInput({ ...Input, name: "" });
-      setError("")
-      setSuccess(`${input.name} category created successfully`);
+        let temp=[...category]
+        temp.map(item=>{
+            if(item.name===props.match.params.category){
+                item['name']=input.name
+            }
+
+        })
+        setCategory(temp)
+        history.push('/manage_category')
     }
   };
 
   return (
     <div className="add__category mt-5">
       <div className="container">
-        <h4 className="text-center mb-3">New Category</h4>
+        <h4 className="text-center mb-3">Edit Category</h4>
         <hr />
         {success ? <div className="alert alert-success">{success}</div> : null}
         {error ? <div className="alert alert-danger">{error}</div> : null}
@@ -71,7 +72,7 @@ const NewCategory = () => {
             className="btn btn-info rounded-0"
             onClick={(e) => submit(e)}
           >
-            Add Category
+            Edit Category
           </button>
 
           <Link to="/manage_category"
@@ -86,4 +87,4 @@ const NewCategory = () => {
   );
 };
 
-export default NewCategory;
+export default CategoryEdit;

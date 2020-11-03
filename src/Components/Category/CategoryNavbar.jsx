@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import {Link} from 'react-router-dom'
 
 import AddIcon from "@material-ui/icons/Add";
-const CategoryNavbar = () => {
+const CategoryNavbar = ({query,setQuery}) => {
+
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
         <div className="left">
-          <a href="" className="navbar-brand">Categories</a>
+          <Link to="/manage_category" className="navbar-brand">Categories</Link>
         </div>
         <div className="middle">
           <form action="">
-          <input type="text" className="form-control" placeholder="Search Category"/>
+          <input type="text" className="form-control" placeholder="Search Category" value={query} onChange={e=>setQuery(e.target.value)}/>
           </form>
         </div>
         <div className="right">

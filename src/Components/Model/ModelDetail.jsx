@@ -39,8 +39,8 @@ const ModelDetail=(props)=>{
                 </tr>
             </thead>
         </table>
-
-        <button className="btn btn-danger" onClick={()=>{if(window.confirm("Delete this model?All products under this model will be deleted.")){deleteModel(props.match.params.model)}}}>
+        <Link to={`/model/edit/${props.match.params.model}`} className="btn btn-info rounded-0">Edit Model</Link>
+        <button className="btn btn-danger rounded-0 mx-2" onClick={()=>{if(window.confirm("Delete this model?All products under this model will be deleted.")){deleteModel(props.match.params.model)}}}>
         Delete Model</button>
     </div>
    

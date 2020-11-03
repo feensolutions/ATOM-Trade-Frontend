@@ -20,7 +20,7 @@ const NewModel = () => {
     e.preventDefault();
 
     for(let i=0;i<model.length;i++){
-      if(model[i].name===input.name){
+      if(model[i].name.toLowerCase()===input.name.toLowerCase()){
         setSuccess("")
         setError("Duplicate Entry")
         return
