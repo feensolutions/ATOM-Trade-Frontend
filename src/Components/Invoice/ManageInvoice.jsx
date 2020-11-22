@@ -1,23 +1,19 @@
 import React,{useState} from 'react'
-import './Category.css'
-
-import CategoryList from './CategoryList'
-
-// Components import
-import CategoryNavbar from './CategoryNavbar'
-const ManageCategory=()=>{
+import InvoiceNavbar from './InvoiceNavbar'
+import InvoiceList from './InvoiceList'
+const ManageInvoice=()=>{
     const[query,setQuery]=useState("")
     return(
         <div className="manage__category mt-5">
-           <h4 className="text-center mb-3">Manage Category</h4>
+           <h4 className="text-center mb-3">Manage Invoice</h4>
             <hr/>
-            <CategoryNavbar query={query} setQuery={setQuery}/>
+            <InvoiceNavbar query={query} setQuery={setQuery}/>
 
             <div className="Categorys mt-4">
                 <div className="row no-gutters">
                     <div className="col-md-12">
                         <div className="container">
-                        <CategoryList query={query}/>
+                        <InvoiceList query={query}/>
                         </div>
                         
                     </div>
@@ -30,4 +26,4 @@ const ManageCategory=()=>{
     )
 }
 
-export default ManageCategory
+export default ManageInvoice

@@ -1,22 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import {Link} from 'react-router-dom'
 
 import AddIcon from "@material-ui/icons/Add";
-const ProductNavbar = ({query,setQuery}) => {
+const UserNavbar = ({query,setQuery}) => {
+
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
         <div className="left">
-          <a href="" className="navbar-brand">Products</a>
+          <Link to="/manage_category" className="navbar-brand">Users</Link>
         </div>
         <div className="middle">
           <form action="">
-          <input type="text" className="form-control" placeholder="Search Products" value={query} onChange={e=>setQuery(e.target.value)}/>
+          <input type="text" className="form-control" placeholder="Search User" value={query} onChange={e=>setQuery(e.target.value)}/>
           </form>
         </div>
         <div className="right">
           <ul className="navbar-nav">
-            <li className="nav-item"><Link to="/add_product" className="btn btn-success">New <AddIcon/> </Link></li>
+            <li className="nav-item"><Link to="/new_user" className="btn btn-success">New <AddIcon/> </Link></li>
           </ul>
         </div>
       </div>
@@ -24,4 +25,4 @@ const ProductNavbar = ({query,setQuery}) => {
   );
 };
 
-export default ProductNavbar;
+export default UserNavbar;

@@ -1,8 +1,18 @@
-import React,{useContext} from 'react'
+import React,{useContext,useState,useEffect} from 'react'
 import {Link,useHistory} from 'react-router-dom'
-import {CategoryContext} from '../../API'
+import {CategoryContext,ProductContext} from '../../API'
 const ModelDetail=(props)=>{
+    const[product,setProduct]=useContext(ProductContext)
     const[category,setCategory]=useContext(CategoryContext)
+    const[filteredProducts,setFilteredProducts]=useState([])
+
+
+    useEffect(()=>{
+      let items=product.filter(item=>item.category===props.match.params.category)
+      
+      setFilteredProducts(items)
+    },[])
+
     let history=useHistory()
     const deleteModel=(categoryName)=>{
         let i=category.filter(item=>item.name!==categoryName)
@@ -28,16 +38,34 @@ const ModelDetail=(props)=>{
     
 
     <div className="container">
-        <table className="table">
+    <table className="table">
             <thead>
                 <tr>
                     <th>S.No</th>
                     <th>Product</th>
-                    <th>Stock Qty</th>
-                    <th>Engine</th>
+                    <th>Consignment</th>
                     <th>Model</th>
+                    <th>Remaining Quantity</th>
+                    <th>Cost Price</th>
+                    <th>Selling Price</th>
                 </tr>
             </thead>
+                <tbody>
+                    {filteredProducts.map((item,id)=>{
+                        return(
+                            <tr key={id}>
+                                <td>{id+1}</td>
+                        <td>{item.name}</td>
+                        <td>{item.consignment}</td>
+                        <td>{item.model}</td>
+                        <td>{item.stock__qty}</td>
+                        <td>{item.cost__price}</td>
+                        <td>{item.selling__price}</td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            
         </table>
 
         <Link to={`/category/edit/${props.match.params.category}`} className="btn btn-info rounded-0">Edit Category</Link>

@@ -31,12 +31,12 @@ const AdminSecondaryNav = () => {
                 className="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                <a className="dropdown-item" href="#">
+                <Link className="dropdown-item" to="/new_invoice">
                   New Invoice
-                </a>
-                <a className="dropdown-item" href="#">
+                </Link>
+                <Link className="dropdown-item" to="/manage_invoice">
                   Manage Invoice
-                </a>
+                </Link>
                 <a className="dropdown-item" href="#">
                   Something else here
                 </a>
@@ -58,7 +58,7 @@ const AdminSecondaryNav = () => {
                 className="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                <Link className="dropdown-item" to="/add_product">
+                <Link className="dropdown-item" to={`/add_product`}>
                   Add Product
                 </Link>
                 <Link className="dropdown-item" to="/manage_product">
@@ -103,6 +103,32 @@ const AdminSecondaryNav = () => {
                 <a className="dropdown-item" href="#">
                   Something else here
                 </a>
+              </div>
+            </li>
+
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                User
+              </a>
+              <div
+                className="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <Link className="dropdown-item" to="/new_user">
+                  Add User
+                </Link>
+                <Link className="dropdown-item" to="/manage_user">
+                  Manage User
+                </Link>
+             
               </div>
             </li>
 

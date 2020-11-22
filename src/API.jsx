@@ -7,7 +7,7 @@ export const ConsignmentContext=createContext()
 export const CategoryContext=createContext()
 export const EngineContext=createContext()
 export const ModelContext=createContext()
-
+export const UserContext=createContext()
 // Product provider
 
 export const ProductProvider=(props)=>{
@@ -53,4 +53,11 @@ export const EngineProvider=(props)=>{
     return <EngineContext.Provider value={[engine,setEngine]}>
         {props.children}
     </EngineContext.Provider>
+}
+
+export const UserProvider=(props)=>{
+    const[user,setUser]=useState([])
+    return <UserContext.Provider value={[user,setUser]}>
+        {props.children}
+    </UserContext.Provider>
 }

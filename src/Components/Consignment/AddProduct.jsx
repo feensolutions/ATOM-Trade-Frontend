@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import{ModelContext,CategoryContext,ConsignmentContext,ProductContext} from '../../API'
-const AddProduct = (props) => {
+const AddProductToConsignment = (props) => {
   // This state handles the inputs of user
   const[product,setProduct]=useContext(ProductContext)
   const[model,setModel]=useContext(ModelContext)
@@ -13,14 +13,13 @@ const AddProduct = (props) => {
     name: "",
     engine: "",
     model: "",
-    consignment:"",
+    consignment:props.match.params.consignment,
     category: "",
     cost__price: 0,
     stock__qty: 0,
     threshold__qty: 10,
     damaged__qty:0,
     percentage__factor: 50,
-    selling_price:0,
   }
   const [input, setInput] = useState(initialState);
 
@@ -114,7 +113,14 @@ const AddProduct = (props) => {
                 />
               </div>
             </div>
-           
+            {/* <div class="col">
+              <div className="form-group">
+                <label htmlFor="engine">Engine</label>
+                <select class="form-control form-control" id="engine">
+                  {}
+                </select>
+              </div>
+            </div> */}
 
             <div class="col">
               <div className="form-group">
@@ -142,17 +148,9 @@ const AddProduct = (props) => {
             <div class="col">
               <div className="form-group">
               <label htmlFor="consignment">Consignment</label>
-           
+                <input type="text" disabled className="form-control" value={input.consignment}/>
               
-              
-                <select class="form-control form-control" id="consignment" onChange={e=>Input(e)} value={input.consignment}>
-                <option>Choose....</option>
-                  <option value="None">None</option>
-                  {consignment.map((item,id)=><option key={id} value={item.name}>{item.name}</option>)}
-
-                </select>
-                
-              
+         
               </div>
             </div>
 
@@ -238,4 +236,4 @@ const AddProduct = (props) => {
   );
 };
 
-export default AddProduct;
+export default AddProductToConsignment;

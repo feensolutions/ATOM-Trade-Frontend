@@ -6,11 +6,11 @@ const ConsignmentList=({query})=>{
     const[consignment,setConsignment]=useContext(ConsignmentContext)
     const[result,setResult]=useState([])
 
-    const filterCollections=(filterQuery)=>{
+    const filterCollections=(filter)=>{
         let filteredItems=[]
-        
+        let filterQuery=filter.toLowerCase()
         consignment.forEach(i=>{
-            if(i.name.includes(filterQuery) || i.involved__bank.includes(filterQuery)||i.company__name.includes(filterQuery)||i.logistic__party.includes(filterQuery)||i.port.includes(filterQuery)||i.border.includes(filterQuery)||i.fiscal__year.includes(filterQuery)){
+            if(i.name.toLowerCase().includes(filterQuery) || i.involved__bank.toLowerCase().includes(filterQuery)||i.company__name.toLowerCase().includes(filterQuery)||i.logistic__party.toLowerCase().includes(filterQuery)||i.port.toLowerCase().includes(filterQuery)||i.border.toLowerCase().includes(filterQuery)||i.fiscal__year.toLowerCase().includes(filterQuery)){
                 
             filteredItems.push(i)
             
