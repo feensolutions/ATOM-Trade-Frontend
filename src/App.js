@@ -32,7 +32,15 @@ import ManageInvoice from "./Components/Invoice/ManageInvoice";
 import NewInvoice from "./Components/Invoice/NewInvoice";
 // User
 import AddUser from "./Components/User/AddUser";
-import ManageUser from './Components/User/ManageUser'
+import ManageUser from "./Components/User/ManageUser";
+import UserDetail from "./Components/User/UserDetail";
+import EditUser from "./Components/User/EditUser";
+
+// Client
+import NewClient from './Components/Client/NewClient'
+import ManageClient from './Components/Client/ManageClient'
+import ClientDetail from './Components/Client/ClientDetail'
+import EditClient from './Components/Client/EditClient'
 // React router import
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -46,6 +54,8 @@ import {
   UserProvider,
 } from "./API";
 
+
+import {ClientProvider} from './Components/Client/ClientAPI'
 function App() {
   return (
     <ProductProvider>
@@ -54,6 +64,7 @@ function App() {
           <EngineProvider>
             <CategoryProvider>
               <UserProvider>
+                <ClientProvider>>
                 <Router>
                   <div className="App">
                     {/* Landing Page */}
@@ -140,7 +151,7 @@ function App() {
                         exact
                         component={ModelEdit}
                       ></Route>
-
+                      {/* Invoice */}
                       <Route
                         path="/manage_invoice"
                         exact
@@ -152,13 +163,51 @@ function App() {
                         exact
                         component={NewInvoice}
                       ></Route>
-
+                      {/* User */}
                       <Route path="/new_user" exact component={AddUser}></Route>
 
-                      <Route path="/manage_user" exact component={ManageUser}></Route>
+                      <Route
+                        path="/manage_user"
+                        exact
+                        component={ManageUser}
+                      ></Route>
+
+                      <Route
+                        path="/user/:username"
+                        exact
+                        component={UserDetail}
+                      ></Route>
+
+                      <Route
+                        path="/user/edit/:username"
+                        exact
+                        component={EditUser}
+                      ></Route>
+
+                      {/* Client */}
+                      <Route path="/new_client" exact component={NewClient}></Route>
+
+                      <Route
+                        path="/manage_client"
+                        exact
+                        component={ManageClient}
+                      ></Route>
+
+                      <Route
+                        path="/client/:company__name"
+                        exact
+                        component={ClientDetail}
+                      ></Route>
+
+                      <Route
+                        path="/client/edit/:company__name"
+                        exact
+                        component={EditClient}
+                      ></Route>
                     </Switch>
                   </div>
                 </Router>
+                </ClientProvider>
               </UserProvider>
             </CategoryProvider>
           </EngineProvider>

@@ -37,9 +37,7 @@ const AdminSecondaryNav = () => {
                 <Link className="dropdown-item" to="/manage_invoice">
                   Manage Invoice
                 </Link>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
+                
               </div>
             </li>
             <li className="nav-item dropdown">
@@ -94,15 +92,13 @@ const AdminSecondaryNav = () => {
                 className="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                <a className="dropdown-item" href="#">
+                <Link className="dropdown-item" to="/new_client">
                   Add Client
-                </a>
-                <a className="dropdown-item" href="#">
+                </Link>
+                <Link className="dropdown-item" to="/manage_client">
                   Manage Client
-                </a>
-                <a className="dropdown-item" href="#">
-                  Something else here
-                </a>
+                </Link>
+               
               </div>
             </li>
 

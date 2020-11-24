@@ -1,0 +1,20 @@
+.middle{
+    width:45rem;
+}
+
+.client-info .row{
+    background: white;
+    padding:5rem;
+}
+
+.data a{
+    display: block;
+    color:black;
+}
+.client__list .data:hover{
+    background-color: rgb(221, 219, 219);
+    transition: all linear 0.2s;
+}
+.data a:hover{
+    text-decoration: none;
+}

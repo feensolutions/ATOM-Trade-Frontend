@@ -10,7 +10,7 @@ import AdminSecondaryNav from './Admin__SecondaryNav'
 const AdminNav = () => {
   return (
     <div className="admin__nav">
-      <nav class="navbar navbar-expand-md admin__menu">
+      <nav className="navbar navbar-expand-md admin__menu">
         <div className="container">
          
           <a className="navbar-brand mx-auto" href="#">

@@ -15,66 +15,53 @@ const AddUser=()=>{
       const [input, setInput] = useState(initialState);
       const [success, setSuccess] = useState("");
       const [error, setError] = useState("");
-      console.log(input)
+      
       // Function to handle input
   const Input = (e) => {
-    setInput({ ...input, [e.target.id]: e.target.value });
+    setInput({ ...input, [e.target.id]: e.target.value});
   };
 
-const checkDuplicate=()=>{
-    if (user.length>0){
-        user.forEach(element => {
-            if(element.email===input.email){
-                return "Email Already Exists"
-            }
-    
-            else if(element.username===input.username){
-                return "Username is Already Taken"
-            }
-    
-            else if(element.contact__info!==""){
-                if(element.contact__info===input.contact__info){
-                    return "Contact Info already registered"
-                }
-            }
-    
-            else{
-                return false
-            }
-        });
-    }
-    return false
-    
-}
+  const handleCheckBox=()=>{
+    setInput({
+      ...input,
+      is__admin:!input.is__admin
+    })
+  }
   const submit=(e)=>{
       e.preventDefault()
-      let duplicate=checkDuplicate()
+    
       if(input.first__name==="" || input.last__name==="" || input.email===""){
           setError("Invalid Information. Please Check the info correctly")
+          setSuccess("")
           return
       }
 
       else if(input.username.length<5){
           setError("Username should be of length 5 or more.")
+          setSuccess("")
           return
       }
 
       else if(input.password!==input.re__password){
           setError("Passwords do not match.")
+          setSuccess("")
           return
         }
 
-        else if(duplicate !==false){
-            setError(duplicate)
-            return
-        }
-    
       else{
-        setUser([...user,input])
+        setUser([...user,{
+          first__name:input.first__name,
+          last__name:input.last__name,
+          email:input.email,
+          username:input.username,
+          contact__info:input.contact__info,
+          password:input.password,
+          is__admin:input.is__admin
+        }])
         setError("")
         setSuccess("User Created Successfully")
-        // setInput(initialState)
-        console.log(user)
+        setInput(initialState)
+      
       }
   }
     return(
@@ -85,8 +72,8 @@ const checkDuplicate=()=>{
         {success ? <div className="alert alert-success">{success}</div> : null}
         {error ? <div className="alert alert-danger">{error}</div> : null}
         <form action="">
-          <div class="row">
-            <div class="col">
+          <div className="row">
+            <div className="col">
               <div className="form-group">
                 <label htmlFor="first__name">First Name</label>
                 <input
@@ -102,7 +89,7 @@ const checkDuplicate=()=>{
             </div>
            
 
-            <div class="col">
+            <div className="col">
             <div className="form-group">
                 <label htmlFor="last__name">Last Name</label>
                 <input
@@ -118,8 +105,8 @@ const checkDuplicate=()=>{
             </div>
           </div>
 
-          <div class="row">
-            <div class="col">
+          <div className="row">
+            <div className="col">
             <div className="form-group">
                 <label htmlFor="email">Email Address</label>
                 <input
@@ -134,7 +121,7 @@ const checkDuplicate=()=>{
               </div>
             </div>
 
-            <div class="col">
+            <div className="col">
             <div className="form-group">
                 <label htmlFor="username">Username</label>
                 <input
@@ -149,7 +136,7 @@ const checkDuplicate=()=>{
               </div>
             </div>
 
-            <div class="col">
+            <div className="col">
             <div className="form-group">
                 <label htmlFor="contact__info">Contact Info</label>
                 <input
@@ -164,8 +151,8 @@ const checkDuplicate=()=>{
             </div>
           </div>
 
-          <div class="row">
-            <div class="col">
+          <div className="row">
+            <div className="col">
             <div className="form-group">
                 <label htmlFor="password">Password</label>
                 <input
@@ -180,7 +167,7 @@ const checkDuplicate=()=>{
               </div>
             </div>
 
-            <div class="col">
+            <div className="col">
               <div className="form-group">
                 <label htmlFor="re__password">Re Enter Password</label>
                 <input
@@ -197,15 +184,21 @@ const checkDuplicate=()=>{
 
 
           </div>
-            <div className="form-group">
+          <div className="row">
+            <div className="col">
+            <div className="form-check mb-2">
                 <input
                   type="checkbox"
+                  className="form-check-input"
                   id="is__admin"
-                  value={input.is__admin}
-                  onChange={(e) => Input(e)}
+                  checked={input.is__admin}
+                  onChange={handleCheckBox}
                   />
-                <label htmlFor="is__admin">&nbsp;&nbsp;Make Admin</label>
+                <label htmlFor="is__admin" className="form-check-label">Assign Admin Privileges</label>
               </div>
+            </div>
+          </div>
+          
         
          
           <button type="submit" className="btn btn-info rounded-0" onClick={e=>submit(e)}>

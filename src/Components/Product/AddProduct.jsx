@@ -100,8 +100,8 @@ const AddProduct = (props) => {
         {success ? <div className="alert alert-success">{success}</div> : null}
         {error ? <div className="alert alert-danger">{error}</div> : null}
         <form action="">
-          <div class="row">
-            <div class="col">
+          <div className="row">
+            <div className="col">
               <div className="form-group">
                 <label htmlFor="name">Product Name</label>
                 <input
@@ -116,10 +116,10 @@ const AddProduct = (props) => {
             </div>
            
 
-            <div class="col">
+            <div className="col">
               <div className="form-group">
                 <label htmlFor="category">Category</label>
-                <select class="form-control form-control" id="category" onChange={e=>Input(e)} value={input.category}>
+                <select className="form-control form-control" id="category" onChange={e=>Input(e)} value={input.category}>
                   <option>Choose....</option>
           {category.map((item,id)=><option key={id} value={item.name}>{item.name}</option>)}
                 </select>
@@ -127,11 +127,11 @@ const AddProduct = (props) => {
             </div>
           </div>
 
-          <div class="row">
-            <div class="col">
+          <div className="row">
+            <div className="col">
               <div className="form-group">
                 <label htmlFor="model">Model</label>
-                <select class="form-control form-control" id="model" onChange={e=>Input(e)} value={input.model}>
+                <select className="form-control form-control" id="model" onChange={e=>Input(e)} value={input.model}>
                 <option>Choose....</option>
                 {model.map((item,id)=><option key={id} value={item.name}>{item.name}</option>)}
 
@@ -139,15 +139,15 @@ const AddProduct = (props) => {
               </div>
             </div>
 
-            <div class="col">
+            <div className="col">
               <div className="form-group">
               <label htmlFor="consignment">Consignment</label>
            
               
               
-                <select class="form-control form-control" id="consignment" onChange={e=>Input(e)} value={input.consignment}>
+                <select className="form-control form-control" id="consignment" onChange={e=>Input(e)} value={input.consignment}>
                 <option>Choose....</option>
-                  <option value="None">None</option>
+               
                   {consignment.map((item,id)=><option key={id} value={item.name}>{item.name}</option>)}
 
                 </select>
@@ -156,7 +156,7 @@ const AddProduct = (props) => {
               </div>
             </div>
 
-            <div class="col">
+            <div className="col">
               <div className="form-group">
                 <label htmlFor="stock__qty">Stock Qty</label>
                 <input
@@ -171,8 +171,8 @@ const AddProduct = (props) => {
             </div>
           </div>
 
-          <div class="row">
-            <div class="col">
+          <div className="row">
+            <div className="col">
               <div className="form-group">
                 <label htmlFor="cost__price">Cost Price (Rs)</label>
                 <input
@@ -186,7 +186,7 @@ const AddProduct = (props) => {
               </div>
             </div>
 
-            <div class="col">
+            <div className="col">
               <div className="form-group">
                 <label htmlFor="precentage__factor">Percentage Factor</label>
                 <input
@@ -200,7 +200,7 @@ const AddProduct = (props) => {
               </div>
             </div>
 
-            <div class="col">
+            <div className="col">
               <div className="form-group">
                 <label htmlFor="threshold__qty">Threshold Qty</label>
                 <input
@@ -214,7 +214,7 @@ const AddProduct = (props) => {
               </div>
             </div>
 
-            <div class="col">
+            <div className="col">
               <div className="form-group">
                 <label htmlFor="damaged__qty">Damaged Qty</label>
                 <input
