@@ -1,0 +1,5 @@
+export {default as TopNav} from './TopNav/TopNav'
+export {default as Footer} from './footer/Footer'
+export {default as CompanySelect} from './Company/CompanySelect'
+export {default as CompanyCreate} from './Company/CompanyCreate'
+export {default as RecommendationMenu} from './RecommendationMenu/RecommendationMenu'

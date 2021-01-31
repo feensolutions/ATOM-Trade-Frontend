@@ -1,3 +1,15 @@
-body{
-  background: grey;
+:root{
+    --background:#D5DB90;
+    --menu-background:#B2B77D;
+    --dark-green:#073E16;
+    --light-green:#2B8945;
+    --red:#CB1515;
+    --light-red:#9F7F7F;
+    --blue:#2B896D;
+    --white:#fff;
+    --heading-height:1.8rem;
+    --top-nav-height:30px;
+    --footer-height:2rem;
 }
+
+

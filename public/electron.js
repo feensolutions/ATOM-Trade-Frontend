@@ -6,7 +6,7 @@ function createWindow(){
       height:900
     })
     win.loadURL(isdev?"http://localhost:3000":`file://${__dirname}/../build/index.html`)
-
+    win.setTitle("ATOM Trade IMS")
     win.webContents.openDevTools()
 }
 
