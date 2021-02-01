@@ -1,9 +1,13 @@
 /* Company Select */
 
+
+.companies{
+    margin-bottom: 10px;
+}
 .create{
     color:var(--dark-green);
     text-decoration:none;
-
+    box-sizing: content-box;
 }
 
 
@@ -21,6 +25,7 @@
     background:var(--menu-background);
     width: 30em;
     margin:5rem auto;
+    
     
 }
 .form_header{

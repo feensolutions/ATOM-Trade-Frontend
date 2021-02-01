@@ -1,5 +1,5 @@
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import './company.css'
 
 import {Link} from 'react-router-dom'
@@ -7,18 +7,21 @@ import {Link} from 'react-router-dom'
 import MainMenu from "../MainMenu/MainMenu";
 // API Import
 import { CompanyContext } from "../../API";
-const CompanySelect = () => {
-  const [companies] = useContext(CompanyContext);
+const CompanySelect = (props) => {
+  const [companies,setCompany] = useContext(CompanyContext);
+  let data=[]
 
+
+  companies.forEach(element => {
+    data.push(element.company)
+});
+
+
+props.back()
   return (
  
-    <MainMenu title="Select Company">
+    <MainMenu title="Select Company" data={data}>
 
-      {companies.length>0
-        ? companies.map((item, id) => {
-            return <p key={id}>{item}</p>;
-          })
-        : null}
       <Link to="/company/create" className="create">Create Company</Link>
       <p className="quit" >Quit</p>
     </MainMenu>

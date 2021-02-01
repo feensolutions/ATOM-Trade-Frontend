@@ -8,21 +8,39 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import {TopNav,Footer,CompanySelect} from './Components/ComponentsImport'
 import CompanyCreate from './Components/Company/CompanyCreate'
 // React router import
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route,useHistory } from "react-router-dom";
 
+
+
+// Mousetrap
+import useMousetrap from "react-hook-mousetrap"
 
 
 // API import
 import { CompanyProvider } from "./API";
+
+
+const Back=()=>{
+  const history=useHistory()
+
+  useMousetrap('esc',()=>{
+    history.goBack();
+   
+  })
+}
+
 const App = () => {
+
   return (
+    
+
     <Router>   
       <>
       <TopNav />
       <CompanyProvider>
         <Switch>
-        <Route path="/" exact component={CompanySelect}/>
-        <Route path="/company/create" exact component={CompanyCreate}/>
+        <Route path="/" exact render={()=><CompanySelect back={Back}/>}/>
+        <Route path="/company/create" exact render={()=><CompanyCreate back={Back}/>}/>
           
         
       </Switch>
