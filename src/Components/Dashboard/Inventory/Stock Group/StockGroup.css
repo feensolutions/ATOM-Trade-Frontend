@@ -1,25 +1,4 @@
-/* Company Select */
-
-.companies {
-  margin-bottom: 10px;
-}
-.create {
-  color: var(--light-green);
-  text-decoration: none;
-  box-sizing: content-box;
-}
-
-.quit {
-  color: var(--red);
-}
-.create:hover {
-  text-decoration: none;
-  color: var(--dark-green);
-}
-
-/* Company Create CSS */
-
-#company_create_form {
+#stock_group_create_form {
   background: var(--menu-background);
   width: 30em;
   margin: 5rem auto;

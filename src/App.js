@@ -5,50 +5,86 @@ import axios from "axios";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 // Components import
-import {TopNav,Footer,CompanySelect} from './Components/ComponentsImport'
-import CompanyCreate from './Components/Company/CompanyCreate'
+import {
+  TopNav,
+  Footer,
+  CompanySelect,
+  AdminDashboard,
+  Inventory,
+  StockGroup,
+  StockCreate,
+} from "./Components/ComponentsImport";
+import CompanyCreate from "./Components/Company/CompanyCreate";
 // React router import
-import { BrowserRouter as Router, Switch, Route,useHistory } from "react-router-dom";
-
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useHistory,
+} from "react-router-dom";
 
 // Mousetrap
-import useMousetrap from "react-hook-mousetrap"
-
+import useMousetrap from "react-hook-mousetrap";
 
 // API import
-import { CompanyProvider } from "./API";
+import { CompanyProvider, StockGroupProvider } from "./API";
 
+const Back = () => {
+  const history = useHistory();
 
-const Back=()=>{
-  const history=useHistory()
-
-  useMousetrap('esc',()=>{
+  useMousetrap("esc", () => {
     history.goBack();
-   
-  })
-}
+  });
+};
 
 const App = () => {
-
   return (
-    
-
-    <Router>   
+    <Router>
       <>
-      <TopNav />
-      <CompanyProvider>
-        <Switch>
-        <Route path="/" exact render={()=><CompanySelect back={Back}/>}/>
-        <Route path="/company/create" exact render={()=><CompanyCreate back={Back}/>}/>
-          
-        
-      </Switch>
-      </CompanyProvider>
-      <Footer/>
-    </>
+        <TopNav />
+        <CompanyProvider>
+          <StockGroupProvider>
+            <Switch>
+              <Route
+                path="/"
+                exact
+                render={() => <CompanySelect Back={Back} />}
+              />
+              <Route
+                path="/company/create"
+                exact
+                render={() => <CompanyCreate Back={Back} />}
+              />
+
+              <Route
+                path="/company/:name"
+                exact
+                render={() => <AdminDashboard Back={Back} />}
+              />
+
+              <Route
+                path="/:name/Inventory"
+                exact
+                render={() => <Inventory Back={Back} />}
+              />
+
+              <Route
+                path="/:name/Inventory/Stock Groups"
+                exact
+                render={() => <StockGroup Back={Back} />}
+              ></Route>
+
+              <Route
+                path="/:name/Inventory/stock_group/Create"
+                exact
+                render={() => <StockCreate Back={Back} />}
+              />
+            </Switch>
+          </StockGroupProvider>
+        </CompanyProvider>
+        <Footer />
+      </>
     </Router>
- 
   );
 };
 
